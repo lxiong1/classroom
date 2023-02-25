@@ -3,7 +3,12 @@ version: "3.9"
 services:
   db:
     image: postgres:15.2
-    restart: on-failure
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     environment:
       - POSTGRES_DB=login
       - POSTGRES_USER=postgres
@@ -12,7 +17,25 @@ services:
       - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
+    networks:
+      - login
+  app:
+    build: .
+    restart: always
+    ports:
+      - '8000:8000'
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db
+    networks:
+      - login
 
 volumes:
   db:
     driver: local
+
+networks:
+  login:
+    driver: bridge
