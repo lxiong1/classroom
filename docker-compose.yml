@@ -18,7 +18,7 @@ services:
     volumes: 
       - db:/var/lib/postgresql/data
     networks:
-      - login
+      - django
   app:
     build: .
     restart: always
@@ -30,12 +30,12 @@ services:
     links:
       - db
     networks:
-      - login
+      - django
 
 volumes:
   db:
     driver: local
 
 networks:
-  login:
+  django:
     driver: bridge
