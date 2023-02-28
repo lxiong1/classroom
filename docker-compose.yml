@@ -20,7 +20,9 @@ services:
     networks:
       - django
   app:
-    build: .
+    image: python:3.10
+    working_dir: /app
+    command: bash -c "scripts/install_deps.sh && scripts/run_server.sh"
     restart: always
     ports:
       - '8000:8000'
@@ -29,6 +31,8 @@ services:
         condition: service_healthy
     links:
       - db
+    volumes:
+      - .:/app
     networks:
       - django
 
