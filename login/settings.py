@@ -67,6 +67,8 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [f"{BASE_DIR}/demo/static"]
+
 WSGI_APPLICATION = "login.wsgi.application"
 
 

@@ -1,4 +1,7 @@
 from django.shortcuts import render
 
-def dashboard(request):
-    return render(request, "base.html")
+def homepage(request):
+    return render(request, "pages/home-page.html")
+
+def signup(request):
+    return render(request, "pages/signup-page.html")
