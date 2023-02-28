@@ -49,7 +49,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "login.urls"
+ROOT_URLCONF = "classroom.urls"
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
 
 STATICFILES_DIRS = [f"{BASE_DIR}/demo/static"]
 
-WSGI_APPLICATION = "login.wsgi.application"
+WSGI_APPLICATION = "classroom.wsgi.application"
 
 
 # Database
@@ -78,7 +78,7 @@ WSGI_APPLICATION = "login.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "login",
+        "NAME": "classroom",
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "db",

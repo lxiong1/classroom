@@ -10,7 +10,7 @@ services:
       timeout: 5s
       retries: 5
     environment:
-      - POSTGRES_DB=login
+      - POSTGRES_DB=classroom
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
@@ -21,7 +21,7 @@ services:
       - django
   app:
     image: python:3.10
-    working_dir: /app
+    working_dir: /classroom
     command: bash -c "scripts/install_deps.sh && scripts/run_server.sh"
     restart: always
     ports:
@@ -32,7 +32,7 @@ services:
     links:
       - db
     volumes:
-      - .:/app
+      - .:/classroom
     networks:
       - django
 
