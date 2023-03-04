@@ -2,6 +2,7 @@
 
 set -ex
 
+python manage.py makemigrations demo &&
 python manage.py migrate && \
     DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser \
     --no-input --username admin --email foobar@gmail.com && \
